@@ -1,7 +1,10 @@
-import 'package:brozerplaylist/consts/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:brozerplaylist/consts/colors.dart';
 
-ourStyle({family = 'vazir', double? size = 14, color = whiteColor}) {
+const light = 'vazirlight';
+const bold = 'vazirbold';
+
+ourStyle({family = 'vazirlight', double? size = 14, color = whiteColor}) {
   return TextStyle(
     fontFamily: family,
     fontSize: size,
