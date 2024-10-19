@@ -1,4 +1,5 @@
 import 'package:brozerplaylist/consts/colors.dart';
+import 'package:brozerplaylist/views/players.dart';
 import 'package:flutter/material.dart';
 import 'package:brozerplaylist/consts/text_style.dart';
 import 'package:brozerplaylist/controller/player_controller.dart';
@@ -94,6 +95,12 @@ class HomePage extends StatelessWidget {
                                 )
                               : null,
                           onTap: () {
+                            Get.to(
+                              () => Players(
+                                data: snapshot.data![index],
+                              ),
+                              transition: Transition.downToUp,
+                            );
                             controller.PlaySong(
                                 snapshot.data![index].uri, index);
                           },
