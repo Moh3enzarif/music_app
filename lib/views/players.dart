@@ -72,25 +72,35 @@ class Players extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Text(
-                          "00:00",
-                          style: ourStyle(color: bgDarkColor),
-                        ),
-                        Expanded(
-                          child: Slider(
-                              thumbColor: slideColor,
-                              inactiveColor: bgColor,
-                              activeColor: slideColor,
-                              value: 0.0,
-                              onChanged: (newvalue) {}),
-                        ),
-                        Text(
-                          "04:00",
-                          style: ourStyle(color: bgDarkColor),
-                        ),
-                      ],
+                    Obx(
+                      () => Row(
+                        children: [
+                          Text(
+                            controller.position.value,
+                            style: ourStyle(color: bgDarkColor),
+                          ),
+                          Expanded(
+                            child: Slider(
+                                thumbColor: slideColor,
+                                inactiveColor: bgColor,
+                                activeColor: slideColor,
+                                min: const Duration(seconds: 0)
+                                    .inSeconds
+                                    .toDouble(),
+                                max: controller.max.value,
+                                value: controller.value.value,
+                                onChanged: (newvalue) {
+                                  controller.changeDurationToSeconds(
+                                      newvalue.toInt());
+                                  newvalue = newvalue;
+                                }),
+                          ),
+                          Text(
+                            controller.duration.value,
+                            style: ourStyle(color: bgDarkColor),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizedBox(height: 12),
                     Row(
